@@ -1,15 +1,13 @@
-import 'package:fateen/screens/signup_screen.dart';
 import 'package:flutter/material.dart';
-import 'home_screen.dart'; // استيراد صفحة الريسيه (Home Screen)
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,10 +19,10 @@ class _LoginScreenState extends State<LoginScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const SizedBox(height: 100),
-              // عنوان تسجيل الدخول
+              // عنوان إنشاء حساب جديد
               const Center(
                 child: Text(
-                  'تسجيل الدخول',
+                  'إنشاء حساب جديد',
                   style: TextStyle(
                     fontSize: 32,
                     fontWeight: FontWeight.bold,
@@ -34,7 +32,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               const SizedBox(height: 10),
               const Text(
-                'أهلاً بك في فطين!',
+                'قم بإنشاء حساب للانضمام إلى فطين!',
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w500,
@@ -42,6 +40,30 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               const SizedBox(height: 40),
+
+              // حقل الاسم
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(12),
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Colors.black12,
+                      blurRadius: 6,
+                      offset: Offset(0, 3),
+                    ),
+                  ],
+                ),
+                child: const TextField(
+                  decoration: InputDecoration(
+                    contentPadding: EdgeInsets.symmetric(vertical: 15),
+                    border: InputBorder.none,
+                    hintText: 'الاسم الكامل',
+                    prefixIcon: Icon(Icons.person, color: Colors.blue),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
 
               // حقل البريد الإلكتروني
               Container(
@@ -92,16 +114,10 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               const SizedBox(height: 30),
 
-              // زر تسجيل الدخول
+              // زر إنشاء الحساب
               GestureDetector(
                 onTap: () {
-                  // الانتقال إلى الصفحة الرئيسية بعد تسجيل الدخول
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const HomeScreen(),
-                    ),
-                  );
+                  // يمكنك إضافة وظيفة إنشاء الحساب هنا
                 },
                 child: Container(
                   padding: const EdgeInsets.symmetric(vertical: 16),
@@ -118,7 +134,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   child: const Center(
                     child: Text(
-                      'تسجيل الدخول',
+                      'إنشاء حساب',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 18,
@@ -130,26 +146,21 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               const SizedBox(height: 20),
 
-              // نص تسجيل حساب جديد
+              // نص العودة إلى تسجيل الدخول
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text(
-                    'ليس لديك حساب؟ ',
+                    'لديك حساب بالفعل؟ ',
                     style: TextStyle(fontSize: 16, color: Colors.black54),
                   ),
                   GestureDetector(
                     onTap: () {
-                      // الانتقال إلى صفحة التسجيل
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const SignUpScreen(),
-                        ),
-                      );
+                      // الرجوع إلى شاشة تسجيل الدخول
+                      Navigator.pop(context);
                     },
                     child: const Text(
-                      'أنشئ حساباً جديداً',
+                      'تسجيل الدخول',
                       style: TextStyle(
                         fontSize: 16,
                         color: Colors.blue,
